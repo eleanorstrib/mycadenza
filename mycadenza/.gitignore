@@ -1,0 +1,5 @@
+cad
+db.sqlite3
+cadenza_db
+*secret.sh
+.DS_store
