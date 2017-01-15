@@ -1,7 +1,11 @@
-{% extends "../base.html" %}
+{% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
 
-    SIGNUP MAIN
+    <form method="post" action="">
+      {% csrf_token %}
+      {{ form.as_table }}
+      <button type="submit">Sign up</button>
+    </form>
 
 {% endblock %}
