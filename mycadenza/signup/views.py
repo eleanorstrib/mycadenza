@@ -13,4 +13,4 @@ def signup(request):
     else:
         form = CadenzaUserForm()
 
-    return render(request, 'signup/signup.html',{ 'form': form})
+    return render(request, 'signup/signup.html', {'form': form})
