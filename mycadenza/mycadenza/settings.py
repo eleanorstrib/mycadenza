@@ -1,8 +1,8 @@
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','')
 
@@ -40,7 +40,7 @@ ROOT_URLCONF = 'mycadenza.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PROJECT_ROOT, 'templates').replace('\\','/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,3 +111,12 @@ PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATICFILES_DIRS = (
+    [os.path.join(PROJECT_ROOT, 'static')]
+)
+
+print("STATICFILES_DIRS", STATICFILES_DIRS)
+print("STATIC_ROOT", STATIC_ROOT)
+print("template dirs", TEMPLATES[0]['DIRS'])
+print(STATIC_ROOT, "/img/this.png")
