@@ -1,12 +1,18 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .forms import CadenzaUserForm
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.core import serializers
-from django.http import JsonResponse
+from django.contrib.auth.forms import PasswordChangeForm
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from mycadenza.serializers import CadenzaUserSerializer
+from .forms import CadenzaUserForm
+from .models import CadenzaUser
+
 
 def signup(request):
     if request.method == 'POST':
@@ -39,7 +45,13 @@ def change_password(request):
                     {'form': form}
                 )
 
-def get_data(request, id):
-    user = CadenzaUser.objects.get(pk=id)
-    data = serializers.serialize('json', [user])
-    return JsonResponse(data, safe=False)
+@api_view(['GET'])
+def api_get_user(request, id):
+    try:
+        user = CadenzaUser.objects.get(id=request.user.id)
+    except CadenzaUser.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = CadenzaUserSerializer(user)
+        return Response(serializer.data)
