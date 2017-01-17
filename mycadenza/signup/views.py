@@ -5,9 +5,10 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
+from django.http import JsonResponse
 
 def signup(request):
-    print(request.user)
     if request.method == 'POST':
         form = CadenzaUserForm(request.POST)
         if form.is_valid():
@@ -22,7 +23,6 @@ def signup(request):
 
 @login_required
 def change_password(request):
-    print(request.user)
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid() and request.user.is_authenticated():
@@ -38,3 +38,8 @@ def change_password(request):
     return render (request, 'registration/change_password.html',
                     {'form': form}
                 )
+
+def get_data(request, id):
+    user = CadenzaUser.objects.get(pk=id)
+    data = serializers.serialize('json', [user])
+    return JsonResponse(data, safe=False)
