@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phonenumber_field',
     'signup',
+    'reports',
 ]
 
 MIDDLEWARE = [
