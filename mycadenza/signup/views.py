@@ -45,6 +45,7 @@ def change_password(request):
                     {'form': form}
                 )
 
+@login_required
 @api_view(['GET'])
 def api_get_user(request, id):
     try:
