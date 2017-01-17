@@ -92,6 +92,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LOGIN_REDIRECT_URL="dashboard"
 
+EMAIL_BACKENDS = "django.core.mail.backends.console.EmailBackend"
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
