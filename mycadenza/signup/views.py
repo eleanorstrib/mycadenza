@@ -19,10 +19,11 @@ def signup(request):
         form = CadenzaUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponsse("success")
+            return render(request, 'signup/success.html', {})
         else:
-            print(form)
-            return HttpResponse("oops")
+            print(form.errors.as_data())
+            print('something went wrong')
+            messages.error(request, "Error")
     else:
         form = CadenzaUserForm()
 
@@ -44,6 +45,12 @@ def change_password(request):
 
     return render (request, 'registration/change_password.html',
                     {'form': form}
+                )
+
+@login_required
+def dashboard(request, id):
+    return render (request, 'reports/dashboard.html',
+                    {}
                 )
 
 @login_required

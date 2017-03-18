@@ -6,4 +6,4 @@ class CadenzaUser(AbstractUser):
     email = models.EmailField(max_length=100, unique=True)
     mobile = PhoneNumberField()
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS=['username', 'mobile']
+    REQUIRED_FIELDS=['username', 'mobile', 'password']
