@@ -1,20 +1,29 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .forms import CadenzaUserForm
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from mycadenza.serializers import CadenzaUserSerializer
+from .forms import CadenzaUserForm
+from .models import CadenzaUser
+
 
 def signup(request):
-    print(request.user)
     if request.method == 'POST':
         form = CadenzaUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse("success")
+            return render(request, 'signup/success.html', {})
         else:
-            return HttpResponse("oops")
+            print(form.errors.as_data())
+            print('something went wrong')
+            messages.error(request, "Error")
     else:
         form = CadenzaUserForm()
 
@@ -22,7 +31,6 @@ def signup(request):
 
 @login_required
 def change_password(request):
-    print(request.user)
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid() and request.user.is_authenticated():
@@ -38,3 +46,21 @@ def change_password(request):
     return render (request, 'registration/change_password.html',
                     {'form': form}
                 )
+
+@login_required
+def dashboard(request, id):
+    return render (request, 'reports/dashboard.html',
+                    {}
+                )
+
+@login_required
+@api_view(['GET'])
+def api_get_user(request, id):
+    try:
+        user = CadenzaUser.objects.get(id=request.user.id)
+    except CadenzaUser.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = CadenzaUserSerializer(user)
+        return Response(serializer.data)
