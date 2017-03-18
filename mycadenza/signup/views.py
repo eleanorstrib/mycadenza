@@ -19,8 +19,9 @@ def signup(request):
         form = CadenzaUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse("success")
+            return HttpResponsse("success")
         else:
+            print(form)
             return HttpResponse("oops")
     else:
         form = CadenzaUserForm()
