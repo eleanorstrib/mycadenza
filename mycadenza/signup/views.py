@@ -49,8 +49,9 @@ def change_password(request):
 
 @login_required
 def dashboard(request, id):
+    user = CadenzaUser.objects.get(id=request.user.id)
     return render (request, 'reports/dashboard.html',
-                    {}
+                    {'user': user}
                 )
 
 @login_required

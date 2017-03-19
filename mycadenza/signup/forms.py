@@ -5,5 +5,5 @@ from .models import CadenzaUser
 class CadenzaUserForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = CadenzaUser
-        fields = ('email', 'mobile')
+        fields = ('username', 'email', 'mobile')
         error_css_class = 'error'

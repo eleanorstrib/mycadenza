@@ -6,9 +6,15 @@
       {% csrf_token %}
       {{ form.non_field_errors }}
       <div class="fieldWrapper">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">username</label>
+        {{ form.username }}
+        </label>
+      </div>
+      <div class="fieldWrapper">
         {{ form.email.errors }}
         <label for="{{ form.email.id_for_label }}">email</label>
-        {{ form.email}}
+        {{ form.email }}
         </label>
       </div>
       <div class="fieldWrapper">
