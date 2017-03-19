@@ -4,4 +4,4 @@ from signup.models import CadenzaUser
 class CadenzaUserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CadenzaUser
-        fields = ('email', 'mobile', 'username', 'tracker_name', 'id',)
+        fields = ('email', 'mobile', 'username', 'id',)
