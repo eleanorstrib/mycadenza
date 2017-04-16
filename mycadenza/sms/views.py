@@ -1,8 +1,6 @@
 import os
 from datetime import datetime, date
 
-from django.shortcuts import render
-
 from django_twilio.decorators import twilio_view
 from twilio.twiml import Response
 from twilio.rest import TwilioRestClient
@@ -12,7 +10,6 @@ from signup.models import CadenzaUser
 ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID', '')
 AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN', '')
 TWILIO_PH_NO = os.environ.get('TWILIO_PH_NO', '')
-
 
 @twilio_view
 def sms(request):
@@ -25,7 +22,7 @@ def sms(request):
             now = datetime.now()
             client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
             todays_messages = client.messages.list(
-                from=user_mobile,
+                from_=user_mobile,
                 to=TWILIO_PH_NO,
                 date_sent=date(now.year, now.month, now.day)
             )
