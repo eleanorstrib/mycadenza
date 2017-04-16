@@ -5,7 +5,6 @@ from twilio import twiml
 
 # @twilio_view
 def sms(request):
-    # pass
     user_msg = request.POST.get('Body', '')
     confirm_msg = "Thanks!  Your entry has been recorded on Cadenza."
     empty_msg = "Hmm. The entry you sent is empty.  Try again?"
@@ -14,4 +13,4 @@ def sms(request):
         response.message(confirm_msg)
     else:
         response.message(empty_msg)
-    return r
+    return response
