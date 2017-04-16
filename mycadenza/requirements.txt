@@ -1,6 +1,7 @@
 dj-database-url==0.4.2
 Django==1.10.5
 django-phonenumber-field==1.1.0
+twilio==5.7.0
 django-twilio==0.8.0
 djangorestframework==3.5.3
 emoji==0.4.5
@@ -13,5 +14,4 @@ PySocks==1.6.7
 pytz==2016.10
 requests==2.13.0
 six==1.10.0
-twilio==6.0.0
 whitenoise==3.3.0
