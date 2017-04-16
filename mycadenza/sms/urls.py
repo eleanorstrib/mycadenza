@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from sms import views
+from . import views
 
 urlpatterns = [
     #twilio url
-    url(r'^$', views.sms, name='sms'),
+    url(r'^sms$', views.sms, name='sms'),
 ]
