@@ -25,7 +25,7 @@ def sms(request):
             now = datetime.now()
             client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
             todays_messages = client.messages.list(
-                from=user_mobile,
+                from_=user_mobile,
                 to=TWILIO_PH_NO,
                 date_sent=date(now.year, now.month, now.day)
             )
