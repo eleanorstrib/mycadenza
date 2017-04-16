@@ -25,15 +25,10 @@ def sms(request):
             now = datetime.now()
             client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
             todays_messages = client.messages.list(
-                from=user_mobile,
-                to=TWILIO_PH_NO,
                 date_sent=date(now.year, now.month, now.day)
             )
-            todays_messages_list = []
-            for message in todays_messages:
-                todays_messages_list.append(message.body)
-                response.message(todays_messages_list)
-        elif user_msg.lower() == "howto":
+            response.message(todays_messages)
+        elif user_msg.lower() == "info":
             response.message(
                 "Type 'today' for all of your current entries. To add an entry, text anything else!"
             )
