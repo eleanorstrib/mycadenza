@@ -1,5 +1,5 @@
 import os
-import datetime
+from datetime import datetime, date
 
 from django.shortcuts import render
 
@@ -22,13 +22,13 @@ def sms(request):
     if user_in_db:
         user_msg = request.POST.get('Body', '')
         if user_msg.lower() == "today":
-            now = datetime.datetime.now()
+            now = datetime.now()
             client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
             todays_messages = client.messages.list(
-                date_sent=datetime.date(now.year, now.month, now.day)
+                date_sent=date(now.year, now.month, now.day)
             )
             response.message(todays_messages)
-        elif user_msg.lower() == "help":
+        elif user_msg.lower() == "info":
             response.message(
                 "Type 'today' for all of your current entries. To add an entry, text anything else!"
             )
