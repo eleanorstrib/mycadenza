@@ -1,8 +1,6 @@
 import os
 from datetime import datetime, date
 
-from django.shortcuts import render
-
 from django_twilio.decorators import twilio_view
 from twilio.twiml import Response
 from twilio.rest import TwilioRestClient
