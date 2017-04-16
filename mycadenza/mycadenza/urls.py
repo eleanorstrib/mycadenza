@@ -21,6 +21,4 @@ urlpatterns = [
     url('', include('signup.urls')),
     url('', include('reports.urls')),
     url(r'^admin/', admin.site.urls),
-    #twilio url
-    url(r'^sms/$', views.sms, name='sms'),
 ]
