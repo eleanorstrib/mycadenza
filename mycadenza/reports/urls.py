@@ -3,5 +3,4 @@ from . import views
 
 urlpatterns = [
     url(r'^dashboard$', views.dashboard, name='dashboard'),
-    url(r'^sms/$', views.sms, name='sms'),
 ]
