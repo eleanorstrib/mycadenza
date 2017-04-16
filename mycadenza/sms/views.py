@@ -13,7 +13,6 @@ ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID','')
 AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN','')
 TWILIO_PH_NO = os.environ.get('TWILIO_PH_NO','')
 
-
 @twilio_view
 def sms(request):
     user_mobile = request.POST.get('From', '')
@@ -25,7 +24,7 @@ def sms(request):
             now = datetime.datetime.now()
             client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
             todays_messages = client.messages.list(
-                date_sent=date(now.year, now.month, now.day)
+                date_sent=datetime.date(now.year, now.month, now.day)
             )
             response.message(todays_messages)
         elif user_msg.lower() == "help":
