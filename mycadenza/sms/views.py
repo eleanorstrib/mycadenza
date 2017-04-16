@@ -26,10 +26,9 @@ def sms(request):
                 to=TWILIO_PH_NO,
                 date_sent=date(now.year, now.month, now.day)
             )
-            todays_messages_list = []
             for message in todays_messages:
-                todays_messages_list.append(message.body)
-                response.message(todays_messages_list)
+                response.message("You made %d entries today") % len(todays_messages)
+                response.message(message.body)
         elif user_msg.lower() == "howto":
             response.message(
                 "Type 'today' for all of your current entries. To add an entry, text anything else!"
