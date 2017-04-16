@@ -1,16 +1,21 @@
 from django.shortcuts import render
 
-from twilio import twiml
 from django_twilio.decorators import twilio_view
-#
+from twilio.twiml import Response
+
+from signup.models import CadenzaUser
+
+
 @twilio_view
 def sms(request):
-    user_msg = request.POST.get('Body', '')
-    confirm_msg = "Thanks!  Your entry has been recorded on Cadenza."
-    empty_msg = "Hmm. The entry you sent is empty.  Try again?"
-    response = twiml.Response()
-    if user_msg != '':
-        response.message(confirm_msg)
+    user_mobile = request.POST.get('From', '')
+    user_in_db = CadenzaUser.objects.filter(mobile=user_mobile)
+    response = Response()
+    if user_in_db:
+        user_msg = request.POST.get('Body', '')
+        response.message("Thank you - your entry has been recorded.")
     else:
-        response.message(empty_msg)
+        response.message(
+            "You have the wrong number - please remove this one from your phone."
+            )
     return response
