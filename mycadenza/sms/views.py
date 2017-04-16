@@ -26,9 +26,7 @@ def sms(request):
                 to=TWILIO_PH_NO,
                 date_sent=date(now.year, now.month, now.day)
             )
-            todays_total = len(todays_messages)
             for message in todays_messages:
-                response.message("You added %d entries today.") % todays_total
                 response.message(message.body)
         elif user_msg.lower() == "how to":
             response.message(
