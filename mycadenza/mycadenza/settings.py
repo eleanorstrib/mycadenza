@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -72,6 +73,10 @@ DATABASES = {
     }
 }
 
+#config for dj db
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
     'rest_framework.permissions.IsAuthenticated',
@@ -126,8 +131,4 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = (
     [os.path.join(PROJECT_ROOT, 'static')]
 )
-
-print("STATICFILES_DIRS", STATICFILES_DIRS)
-print("STATIC_ROOT", STATIC_ROOT)
-print("template dirs", TEMPLATES[0]['DIRS'])
-print(STATIC_ROOT, "/img/this.png")
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
