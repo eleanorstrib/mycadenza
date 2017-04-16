@@ -27,7 +27,7 @@ def sms(request):
                 date_sent=date(now.year, now.month, now.day)
             )
             for message in todays_messages:
-                response.message("You made %d entries today") % len(todays_messages)
+                response.message("You made %d entries today") % (len(todays_messages))
                 response.message(message.body)
         elif user_msg.lower() == "howto":
             response.message(
