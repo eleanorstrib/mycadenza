@@ -4,3 +4,4 @@ cadenza_db
 *secret.sh
 *gitignore
 .DS_Store
+*.pyc
