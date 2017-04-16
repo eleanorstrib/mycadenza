@@ -33,7 +33,7 @@ def sms(request):
             for message in todays_messages:
                 todays_messages_list.append(message.body)
                 response.message(todays_messages_list)
-        elif user_msg.lower() == "info":
+        elif user_msg.lower() == "howto":
             response.message(
                 "Type 'today' for all of your current entries. To add an entry, text anything else!"
             )
