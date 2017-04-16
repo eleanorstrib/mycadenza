@@ -11,7 +11,6 @@ ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID', '')
 AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN', '')
 TWILIO_PH_NO = os.environ.get('TWILIO_PH_NO', '')
 
-
 @twilio_view
 def sms(request):
     user_mobile = request.POST.get('From', '')
