@@ -28,7 +28,7 @@ def sms(request):
                 date_sent=datetime.date(now.year, now.month, now.day)
             )
             response.message(todays_messages)
-        elif user_msg.lower() == "help":
+        elif user_msg.lower() == "info":
             response.message(
                 "Type 'today' for all of your current entries. To add an entry, text anything else!"
             )
