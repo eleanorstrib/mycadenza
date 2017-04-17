@@ -1,17 +1,17 @@
 
 h1,
-h2 {
+h2,
+.navbar-brand {
   font-family: 'Lobster', Arial, sans-serif;
 }
 
 .navbar-default {
-  	background-color: #AABBBB !important;
+  	background-color: #AABBBB;
   	border-radius: 0;
-  	margin-bottom: 0px;
+  	margin-bottom: 0;
 }
 
 .navbar-brand {
-  font-family: 'Lobster', Arial, sans-serif;
   font-size: 2.5em;
 }
 
