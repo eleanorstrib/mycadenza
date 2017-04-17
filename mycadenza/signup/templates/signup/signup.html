@@ -1,38 +1,58 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
+<link rel="stylesheet" type="text/css" href="../static/styles.css">
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class = "col-md-6 col-xs-12"><br />
+      <h1 class="display-3">record every note</h1>
+      <p class="lead">cadenza is a virtual journal updated via SMS.</p>
+    </div>
+    <div class = "col-md-6 col-xs-12 form-column">
+      {% if user.is_authenticated %}
 
-    <form method="post" action="">
-      {% csrf_token %}
-      {{ form.non_field_errors }}
-      <div class="fieldWrapper">
-        {{ form.username.errors }}
-        <label for="{{ form.username.id_for_label }}">username</label>
-        {{ form.username }}
-        </label>
-      </div>
-      <div class="fieldWrapper">
-        {{ form.email.errors }}
-        <label for="{{ form.email.id_for_label }}">email</label>
-        {{ form.email }}
-        </label>
-      </div>
-      <div class="fieldWrapper">
-        {{ form.mobile.errors }}
-        <label for="{{ form.mobile.id_for_label }}">mobile number</label>
-        {{ form.mobile }}
-      </div>
-      <div class="fieldWrapper">
-        {{ form.password1.errors }}
-        <label for="{{ form.password1.id_for_label }}">password</label>
-        {{ form.password1 }}
-      </div>
-      <div class="fieldWrapper">
-        {{ form.password2.errors }}
-        <label for="{{ form.password2.id_for_label }}">confirm password</label>
-        {{ form.password2 }}
-      </div>
-      <button type="submit">Sign up</button>
-    </form>
+      {% else %}
+      <form method="post" action="">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+          {{ form.username.errors }}
+          <label for="{{ form.username.id_for_label }}">username</label><br />
+          {{ form.username }}
+          </label>
+        </div>
+        <br />
+        <div class="fieldWrapper">
+          {{ form.email.errors }}
+          <label for="{{ form.email.id_for_label }}">email</label><br />
+          {{ form.email }}
+          </label>
+        </div>
+        <br />
+        <div class="fieldWrapper">
+          {{ form.mobile.errors }}
+          <label for="{{ form.mobile.id_for_label }}">mobile number</label><br />
+          {{ form.mobile }}
+        </div>
+        <br />
+        <div class="fieldWrapper">
+          {{ form.password1.errors }}
+          <label for="{{ form.password1.id_for_label }}">password</label><br />
+          {{ form.password1 }}
+        </div>
+        <br />
+        <div class="fieldWrapper">
+          {{ form.password2.errors }}
+          <label for="{{ form.password2.id_for_label }}">confirm password</label><br />
+          {{ form.password2 }}
+        </div>
+        <br />
+        <button type="submit">sign up</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}
