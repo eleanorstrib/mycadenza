@@ -1,15 +1,43 @@
 
 h1,
 h2 {
-  font-family: 'Marck Script', cursive;
+  font-family: 'Lobster', Arial, sans-serif;
+}
+
+.navbar-default {
+  	background-color: #AABBBB !important;
+  	border-radius: 0;
+  	margin-bottom: 0px;
 }
 
 .navbar-brand {
-  font-family: 'Marck Script', cursive;
-  font-size: 2em;
-  color: #FDFFFF;
+  font-family: 'Lobster', Arial, sans-serif;
+  font-size: 2.5em;
 }
 
 body {
   font-family: 'Lato', Helvetica, sans-serif;
+}
+
+button[type="submit"] {
+  width: 100px;
+  height: 30px;
+  background-color: #5BC0EB;
+  border: none;
+  border-radius: 20px;
+}
+
+button:hover {
+  background-color: #9BC53D;
+}
+
+.jumbotron.jumbotron-fluid {
+  background: url("../static/img/phone_journal.jpeg") no-repeat center center;
+  position: fixed;
+  width: 100%;
+  color: white;
+}
+
+.form-column {
+  padding-left: 20px;
 }
