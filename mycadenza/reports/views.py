@@ -24,5 +24,8 @@ def dashboard(request):
         from_=user_mobile_no,
         to=TWILIO_PH_NO,
     )
-    print(all_entries)
-    return render(request, 'reports/dashboard.html', {'all_entries': all_entries})
+    for message in all_entries:
+        print (message.date_sent)
+    all_entries_clean = [message for message in all_entries if message.body.lower() != 'today' and message.body.lower() != 'how to']
+    print(all_entries_clean)
+    return render(request, 'reports/dashboard.html', {'all_entries': all_entries_clean})
