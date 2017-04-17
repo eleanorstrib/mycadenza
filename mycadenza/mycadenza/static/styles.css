@@ -1,0 +1,15 @@
+
+h1,
+h2 {
+  font-family: 'Marck Script', cursive;
+}
+
+.navbar-brand {
+  font-family: 'Marck Script', cursive;
+  font-size: 2em;
+  color: #FDFFFF;
+}
+
+body {
+  font-family: 'Lato', Helvetica, sans-serif;
+}
