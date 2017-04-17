@@ -3,6 +3,10 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-This is the dashboard, {{ user }}. 
+This is the dashboard, {{ user }}.
+
+{% for each_message in all_entries %}
+  {{ each_message.body }}
+{% endfor %}
 
 {% endblock %}

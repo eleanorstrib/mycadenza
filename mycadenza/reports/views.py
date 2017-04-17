@@ -25,4 +25,4 @@ def dashboard(request):
         to=TWILIO_PH_NO,
     )
     print(all_entries)
-    return render(request, 'reports/dashboard.html', {})
+    return render(request, 'reports/dashboard.html', {'all_entries': all_entries})
