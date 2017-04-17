@@ -29,7 +29,7 @@ def sms(request):
             todays_messages_body = "Here are all of your updates for today: "
             for message in todays_messages:
                 todays_messages_body += message.body + ", "
-                response.message(todays_messages_body)
+            response.message(todays_messages_body)
         elif user_msg.lower() == "how to":
             response.message(
                 "Type 'today' for all of your current entries. To add an entry, text anything else!"
