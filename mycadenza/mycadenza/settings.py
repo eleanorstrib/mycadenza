@@ -121,6 +121,7 @@ USE_L10N = True
 USE_TZ = True
 
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'US'
 
 
 # Static files (CSS, JavaScript, Images)
