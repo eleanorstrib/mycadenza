@@ -4,7 +4,7 @@ from datetime import datetime, date
 from django_twilio.decorators import twilio_view
 from twilio.twiml import Response
 from twilio.rest import TwilioRestClient
-from authy.api import AuthyApiClient
+# from authy.api import AuthyApiClient
 
 from signup.models import CadenzaUser
 

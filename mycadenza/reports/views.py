@@ -3,7 +3,7 @@ import os
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from twilio.rest import TwilioRestClient
+from twilio.rest import Client
 
 from signup.models import CadenzaUser
 
@@ -18,14 +18,13 @@ def dashboard(request):
     print(user)
     user_data = CadenzaUser.objects.get(username=user)
     user_mobile_obj = user_data.mobile
+    print('mobile', user_mobile_obj.country_code)
     user_mobile_no = "+" + str(user_mobile_obj.country_code) + str(user_mobile_obj.national_number)
     client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
     all_entries = client.messages.list(
         from_=user_mobile_no,
         to=TWILIO_PH_NO,
     )
-    for message in all_entries:
-        print (message.date_sent)
     all_entries_clean = [message for message in all_entries if message.body.lower() != 'today' and message.body.lower() != 'how to']
     print(all_entries_clean)
     return render(request, 'reports/dashboard.html', {'all_entries': all_entries_clean})
