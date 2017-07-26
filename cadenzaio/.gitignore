@@ -1,2 +1,3 @@
 cadvenv
 *.sh
+*.pyc
